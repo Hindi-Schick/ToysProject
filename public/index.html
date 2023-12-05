@@ -4,154 +4,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Toys Project</title>
+    <title>Toy Project Documentation</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 
 <body>
 
-
-
     <header class="container-fluid">
         <div class="container text-center">
-            <h1 class="display-2 mt-4">Toys Project Documentation</h1>
+            <h1 class="display-2 mt-4">Toy Project Documentation</h1>
         </div>
-        <!-- <div class="container">
-    <ul class="nav">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Toys</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Users</a>
-          </li>
-      </ul>
-    </div> -->
     </header>
+
     <section class="container-fluid">
+        <!-- User Routes -->
         <div class="container border shadow p-3 mb-5 bg-body-tertiary rounded mt-5">
-            <h3 class="display-6 m-4">User routes</h3>
+            <h3 class="display-6 m-4 text-center">User Routes</h3>
             <table class="table table-striped text-center">
+                <!-- Table Headers -->
                 <tr class="table-danger">
                     <th scope="col">METHOD</th>
                     <th scope="col">URL</th>
                     <th scope="col">BODY</th>
                     <th scope="col">DESCRIPTION</th>
                 </tr>
+
+                <!-- POST /api/v1/users/register -->
                 <tr class="table-light">
                     <td class="table-light">POST (register)</td>
-                    <td class="table-light">/users</td>
-                    <!-- add body  -->
-                    <td class="table-light">{ "fullName":"Michael Brown",
-                        "email": "michael.brown@example.com",
-                        "password": "brownpass",
-                        "role": "user"
-                        } </td>
-                    <td class="table-light">Add a new user to the data base ,if you want to see the template of valid
-                        user.</td>
+                    <td class="table-light">http://localhost:8000/api/v1/users/register</td>
+                    <td class="table-light">{ "email": "test@example.com", "password": "testpassword", "firstName": "John", "lastName": "Doe" }</td>
+                    <td class="table-light">Register a new user.</td>
                 </tr>
+
+                <!-- POST /api/v1/users/login -->
                 <tr class="table-light">
                     <td class="table-light">POST (login)</td>
-                    <td class="table-light">/users/login</td>
-                    <td class="table-light">{
-                        "email": "noa@gmail.com",
-                        "password": "1234"
-                        } </td>
-                    <td class="table-light">User login, if the email and password are correct the server will respond
-                        with a token,
-                        if you want to see the template of valid user.</td>
+                    <td class="table-light">http://localhost:8000/api/v1/users/login</td>
+                    <td class="table-light">{ "email": "test@example.com", "password": "testpassword" }</td>
+                    <td class="table-light">Login and receive an authentication token.</td>
                 </tr>
+
+                <!-- GET /api/v1/users -->
                 <tr class="table-light">
-                    <td class="table-light">PUT</td>
-                    <td class="table-light">/users/:idEdit</td>
-                    <td class="table-light"> { "fullName":"Michael Brown",
-                        "email": "michael.brown@example.com",
-                        "password": "brownpass",
-                        "role": "user"
-                        } </td>
-                    <td class="table-light">Update user details and save to databace.</td>
+                    <td class="table-light">GET</td>
+                    <td class="table-light">http://localhost:8000/api/v1/users/</td>
+                    <td class="table-light">none</td>
+                    <td class="table-light">Get a list of all users.</td>
                 </tr>
+
+                <!-- GET /api/v1/users/{user_id} -->
                 <tr class="table-light">
+                    <td class="table-light">GET</td>
+                    <td class="table-light">http://localhost:8000/api/v1/users/{user_id}</td>
+                    <td class="table-light">none</td>
+                    <td class="table-light">Get user details by ID. Replace {user_id} with the actual user ID.</td>
+                </tr>
+
+                <!-- PATCH /api/v1/users/{user_id} -->
+                <tr class="table-light">
+                    <td class="table-light">PATCH</td>
+                    <td class="table-light">http://localhost:8000/api/v1/users/{user_id}</td>
+                    <td class="table-light">{ "firstName": "UpdatedFirstName", "lastName": "UpdatedLastName" }</td>
+                    <td class="table-light">Update user details by ID. Replace {user_id} with the actual user ID.</td>
+                </tr>
+
+                <!-- DELETE /api/v1/users/{user_id} -->
+                <tr class="table-Info">
                     <td class="table-Info">DELETE</td>
-                    <td class="table-Info">/users/delete/:idDel</td>
-                    <td class="table-Info">none </td>
-                    <td class="table-Info">Delete a user from the data base.</td>
+                    <td class="table-Info">http://localhost:8000/api/v1/users/{user_id}</td>
+                    <td class="table-Info">none</td>
+                    <td class="table-Info">Delete user by ID. Replace {user_id} with the actual user ID.</td>
                 </tr>
             </table>
         </div>
     </section>
+
     <section class="container-fluid">
-        <div class="container  border shadow p-3 mb-5 bg-body-tertiary rounded">
-            <h3 class="display-6 m-4">Toys routes</h3>
+        <!-- Toys Routes -->
+        <div class="container border shadow p-3 mb-5 bg-body-tertiary rounded">
+            <h3 class="display-6 m-4 text-center">Toys Routes</h3>
             <table class="table table-striped text-center">
+                <!-- Table Headers -->
                 <tr class="table-danger">
                     <th scope="col">METHOD</th>
                     <th scope="col">URL</th>
                     <th scope="col">BODY</th>
                     <th scope="col">DESCRIPTION</th>
                 </tr>
-                <tr class="table-danger">
-                    <td class="table-light">GET</td>
-                    <td class="table-light">/toys</td>
-                    <td class="table-light">none</td>
-                    <td class="table-light">Get a list of all the toys, will present 10 results per page.</td>
-                </tr>
-                <tr class="table-light">
-                    <td class="table-light">GET</td>
-                    <td class="table-light">/toys/search/s=Toy1</td>
-                    <td class="table-light">none</td>
-                    <td class="table-light">search for a toy by searching follwing name or info after the "s=", it will
-                        present 10 results per page.</td>
-                </tr>
-                <tr class="table-light">
-                    <td class="table-light">GET</td>
-                    <td class="table-light">/toys/category/:catName</td>
-                    <td class="table-light">none</td>
-                    <td class="table-light"> Get a list of all the toys in toys category, it will present 10 results per
-                        page.</td>
 
-                </tr>
+                <!-- POST /api/v1/toys/createToy -->
                 <tr class="table-light">
                     <td class="table-light">POST</td>
-                    <td class="table-light">/toys</td>
-                    <!-- add post req -->
-                    <td class="table-light"> {
-                        "name": "Board Game: Monopoly Super",
-                        "info": "Classic family board game for hours of fun and strategic play.",
-                        "category": "Board Games",
-                        "img_url": "https://example.com/monopoly.jpg",
-                        "price": 60.00
-                        }</td>
-                    <td class="table-light">Add a new toy to the data base, You need a token for this query ,
-                        if you want to see the template of valid toy</td>
+                    <td class="table-light">http://localhost:8000/api/v1/toys/createToy</td>
+                    <td class="table-light">{ "name": "ToyName", "description": "ToyDescription", "category": "ToyCategory", "price": 19.99, "img_url": "https://example.com/toy_image.jpg" }</td>
+                    <td class="table-light">Add a new toy to the database. Requires authentication token.</td>
                 </tr>
+
+                <!-- GET /api/v1/toys -->
+                <tr class="table-danger">
+                    <td class="table-light">GET</td>
+                    <td class="table-light">http://localhost:8000/api/v1/toys/</td>
+                    <td class="table-light">none</td>
+                    <td class="table-light">Get a list of all toys.</td>
+                </tr>
+
+                <!-- GET /api/v1/toys/{toy_id} -->
                 <tr class="table-light">
-                    <td class="table-light">PUT</td>
-                    <td class="table-light">/toys/:editid</td>
-                    <!-- check id and body -->
-                    <td class="table-light">{
-                        "name": "Board Game: Monopoly Super",
-                        "info": "Classic family board game for hours of fun and strategic play.",
-                        "category": "Board Games",
-                        "img_url": "https://example.com/monopoly.jpg",
-                        "price": 60.00
-                        }</td>
-                    <td class="table-light">Update a toy in the data base,You need a token for this query.</td>
+                    <td class="table-light">GET</td>
+                    <td class="table-light">http://localhost:8000/api/v1/toys/{toy_id}</td>
+                    <td class="table-light">none</td>
+                    <td class="table-light">Get toy details by ID. Replace {toy_id} with the actual toy ID.</td>
                 </tr>
+
+                <!-- PATCH /api/v1/toys/{toy_id} -->
+                <tr class="table-light">
+                    <td class="table-light">PATCH</td>
+                    <td class="table-light">http://localhost:8000/api/v1/toys/{toy_id}</td>
+                    <td class="table-light">{ "name": "UpdatedToyName", "description": "UpdatedToyDescription" }</td>
+                    <td class="table-light">Update toy details by ID. Replace {toy_id} with the actual toy ID. Requires authentication token.</td>
+                </tr>
+
+                <!-- DELETE /api/v1/toys/{toy_id} -->
                 <tr class="table-light">
                     <td class="table-light">DELETE</td>
-                    <td class="table-light">/toys/:delid</td>
+                    <td class="table-light">http://localhost:8000/api/v1/toys/{toy_id}</td>
                     <td class="table-light">none</td>
-                    <td class="table-light">Delete a toy from the data base, You need a token for this query.</td>
+                    <td class="table-light">Delete toy by ID. Requires authentication token.</td>
                 </tr>
             </table>
         </div>
     </section>
-
     <footer>
         <hr class="mt-5">
         <div class="container">
-            <p>Hindi Schick 2023</p>
+            <p class="text-center">@Hindi Schick 2023</p>
         </div>
     </footer>
 

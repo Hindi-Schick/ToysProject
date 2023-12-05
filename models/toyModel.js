@@ -25,10 +25,10 @@ const toySchema = new mongoose.Schema({
         type: Date,
         default: Date.now,
     },
-    user_id: {
-        type: mongoose.Schema.Types.ObjectId,  
-        ref: "User", 
+   user_id: {
+        type: mongoose.Schema.Types.ObjectId,
         required: true,
+        ref: 'User'
     },
 });
 
