@@ -54,7 +54,7 @@ const toyJoiSchema = {
         res.sendStatus(400);
     }
 };*/
-exports.createToy = async (req, res, next) => {
+/*exports.createToy = async (req, res, next) => {
     try {
         const body = req.body;
         const userId = res.locals._id; // השינוי כאן ל־_id
@@ -79,7 +79,21 @@ exports.createToy = async (req, res, next) => {
         console.error(error);
         res.sendStatus(400);
     }
-};
+};*/
+exports.createToy = async (req, res, next) => {
+    const body = req.body;
+    const userId = res.locals.userId;
+    try {
+        const newToy = new Toy(body);
+        newToy.ownerId = userId;
+        newToy.id = newToy._id;
+        await newToy.save();
+        res.status(201).send(newToy);
+    } catch (error) {
+        console.log(error);
+        res.sendStatus(400);
+    }
+}
 
 exports.getAllToys = async (req, res, next) => {
     try {
@@ -111,7 +125,7 @@ exports.getToyById = async (req, res, next) => {
 
 exports.editToy = async (req, res, next) => {
     try {
-        const updatedToy = await Toy.findByIdAndUpdate(req.params.id, req.body, { new: true });
+        const updatedToy = await Toy.updateOne({_id: req.params.id}, req.body);
         if (!updatedToy) {
             return res.status(404).json({ message: "Toy not found" });
         }
@@ -124,7 +138,7 @@ exports.editToy = async (req, res, next) => {
 
 exports.deleteToy = async (req, res, next) => {
     try {
-        const deletedToy = await Toy.findByIdAndDelete(req.params.id);
+        const deletedToy = await Toy.deleteOne({ id: req.params.id }, req.body, { new: true });
         if (!deletedToy) {
             return res.status(404).json({ message: "Toy not found" });
         }

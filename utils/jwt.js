@@ -1,23 +1,32 @@
 const jwt = require("jsonwebtoken");
-const jwtSecret = '123@@';
 
+/**
+ * 
+ * @param {object} payload 
+ * @returns {string}
+ * 
+ */
+const jwtSecret= '123@@';
 exports.generateToken = (payload) => {
     try {
-        const token = jwt.sign({ ...payload }, jwtSecret, { expiresIn: '2h' });
+        const token = jwt.sign({ ...payload },jwtSecret , { expiresIn: '2h' });
         return token;
     } catch (error) {
-        throw new Error(error.message);
+        throw Error(error.message);
     }
 };
+
+/**
+ * 
+ * @param {string} token 
+ * @returns {object}
+ */
 
 exports.decodeToken = (token) => {
     try {
-        const payload = jwt.verify(token, jwtSecret);
+        const payload = jwt.verify(token, jwtSecret); //vs decode
         return payload;
     } catch (error) {
-        console.error("Error decoding token:", error.message);
-        return null; // או לטפל בצורה אחרת בכל זאת
+        throw Error(error.message);
     }
 };
-
-

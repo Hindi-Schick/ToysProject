@@ -3,9 +3,9 @@ const { createToy, getAllToys, getToyById, editToy, deleteToy } = require("../co
 const { auth } = require("../middlewares/auth");
 const router = express.Router();
 
-router.post("/createToy", auth("USER"), createToy);
+router.post("/", auth("USER"), createToy);
 router.get("/", getAllToys);
-router.get("/:id", auth(), getToyById);
+router.get("/:id", getToyById);
 router.patch("/:id", auth("USER"), editToy);
 router.delete("/:id", auth("USER"), deleteToy);
 
